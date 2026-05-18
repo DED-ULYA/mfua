@@ -1,16 +1,18 @@
 ﻿#include <iostream>
+using namespace std;
+
 
 int main() {
     setlocale(LC_ALL, "rus");
     int m, n;
 
-    std::cout << "Введите размер массива A (m): ";
-    std::cin >> m;
-    std::cout << "Введите размер массива B (n, n > m): ";
-    std::cin >> n;
+    cout << "Введите размер массива A (m): ";
+    cin >> m;
+    cout << "Введите размер массива B (n, n > m): ";
+    cin >> n;
 
     if (n <= m) {
-        std::cout << "Ошибка: n должно быть больше m" << std::endl;
+        cout << "Ошибка: n должно быть больше m" << endl;
         return 1;
     }
 
@@ -18,15 +20,15 @@ int main() {
     int B[100];
 
     // Ввод массива A
-    std::cout << "Введите " << m << " элементов массива A:" << std::endl;
+    cout << "Введите " << m << " элементов массива A:" << endl;
     for (int i = 0; i < m; i++) {
-        std::cin >> A[i];
+        cin >> A[i];
     }
 
     // Ввод массива B
-    std::cout << "Введите " << n << " элементов массива B:" << std::endl;
+    cout << "Введите " << n << " элементов массива B:" << endl;
     for (int i = 0; i < n; i++) {
-        std::cin >> B[i];
+        cin >> B[i];
     }
 
     int position = -1;  // позиция начала A в B (-1 означает не найдено)
@@ -51,11 +53,11 @@ int main() {
 
     // Вывод результата
     if (position != -1) {
-        std::cout << "Массив A найден в массиве B, начиная с индекса " << position << std::endl;
-        std::cout << "(позиция " << position + 1 << " при нумерации с 1)" << std::endl;
+        cout << "Массив A найден в массиве B, начиная с индекса " << position << endl;
+        cout << "(позиция " << position + 1 << " при нумерации с 1)" << endl;
     }
     else {
-        std::cout << "Массив A не найден в массиве B" << std::endl;
+        cout << "Массив A не найден в массиве B" << endl;
     }
 
     return 0;
