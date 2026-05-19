@@ -1,43 +1,49 @@
 ﻿#include <iostream>
-using namespace std;
+#include <cmath> // для abs() при работе с отрицательными числами
 
 int main() {
-    setlocale(LC_ALL, "rus");
-    int n;
-    cout << "Введите размер массива: ";
-    cin >> n;
+    const int n = 10; // размер исходного массива (можно изменить или ввести с клавиатуры)
+    int K[n]; // исходный массив
+    int L[n]; // массив для четных элементов
+    int M[n]; // массив для нечетных элементов
+    int countL = 0; // счетчик четных
+    int countM = 0; // счетчик нечетных
 
-    double X[100];      // исходный массив
-    double result[100]; // массив для результата
-    double sum = 0;     // накопленная сумма
-
-    if (n <= 0 || n > 100) {
-        cout << "Ошибка: размер массива должен быть от 1 до 100" << endl;
-        return 1;
-    }
-
-    cout << "Введите " << n << " чисел:" << endl;
+    // Ввод элементов массива K
+    std::cout << "Введите " << n << " целых чисел:" << std::endl;
     for (int i = 0; i < n; i++) {
-        cin >> X[i];
+        std::cin >> K[i];
     }
 
-    // Вычисляем сглаженные значения
+    // Разделение на четные и нечетные
     for (int i = 0; i < n; i++) {
-        sum += X[i];                // добавляем текущий элемент к сумме
-        result[i] = sum / (i + 1); // среднее арифметическое первых (i+1) элементов
+        if (K[i] % 2 == 0) {
+            L[countL] = K[i];
+            countL++;
+        } else {
+            M[countM] = K[i];
+            countM++;
+        }
     }
 
-    cout << "Исходный массив X: ";
+    // Вывод результата
+    std::cout << "\nИсходный массив K: ";
     for (int i = 0; i < n; i++) {
-        cout << X[i] << " ";
+        std::cout << K[i] << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
 
-    cout << "Сглаженный массив: ";
-    for (int i = 0; i < n; i++) {
-        cout << result[i] << " ";
+    std::cout << "Четные элементы (массив L): ";
+    for (int i = 0; i < countL; i++) {
+        std::cout << L[i] << " ";
     }
-    cout << endl;
+    std::cout << "\nКоличество четных элементов: " << countL << std::endl;
+
+    std::cout << "Нечетные элементы (массив M): ";
+    for (int i = 0; i < countM; i++) {
+        std::cout << M[i] << " ";
+    }
+    std::cout << "\nКоличество нечетных элементов: " << countM << std::endl;
 
     return 0;
 }
